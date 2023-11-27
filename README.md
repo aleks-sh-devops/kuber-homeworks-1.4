@@ -30,6 +30,36 @@
 4. Продемонстрировать доступ с помощью `curl` по доменному имени сервиса.
 5. Предоставить манифесты Deployment и Service в решении, а также скриншоты или вывод команды п.4.
 
+
+Создаем пространство имен под ДЗ:
+```
+usrcon@cli-k8s-01:~/manifests/03_dz_kuber_1.4$ kubectl get ns
+NAME              STATUS   AGE
+kube-system       Active   13d
+kube-public       Active   13d
+kube-node-lease   Active   13d
+default           Active   13d
+lesson2           Active   6d14h
+dz3               Active   5d23h
+lesson3           Active   3d23h
+metallb-system    Active   2d23h
+usrcon@cli-k8s-01:~/manifests/03_dz_kuber_1.4$ kubectl apply -f ~/manifests/03_dz_kuber_1.4/01_namespace.yml
+namespace/dz4 created
+usrcon@cli-k8s-01:~/manifests/03_dz_kuber_1.4$ kubectl get ns
+NAME              STATUS   AGE
+kube-system       Active   13d
+kube-public       Active   13d
+kube-node-lease   Active   13d
+default           Active   13d
+lesson2           Active   6d14h
+dz3               Active   5d23h
+lesson3           Active   3d23h
+metallb-system    Active   2d23h
+dz4               Active   11s
+```
+
+
+
 ------
 
 ### Задание 2. Создать Service и обеспечить доступ к приложениям снаружи кластера
