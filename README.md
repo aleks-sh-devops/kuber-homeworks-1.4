@@ -310,6 +310,10 @@ microk8s-01   Ready    <none>   6d17h   v1.28.3   10.50.41.124   <none>        U
 microk8s-02   Ready    <none>   13d     v1.28.3   10.50.41.125   <none>        Ubuntu 22.04.3 LTS   5.15.0-88-generic   containerd://1.6.15
 ```
 
-Проверяю в браузере доступность приложений из обоих кластеров:
+Проверяю в браузере доступность приложений из обоих кластеров:  
+![nodeport1](/screenshots/1.png)  
+![nodeport2](/screenshots/2.png)  
+![nodeport3](/screenshots/3.png)  
+![nodeport4](/screenshots/4.png)  
 
 ------
