@@ -292,4 +292,24 @@ usrcon@cli-k8s-01:~/manifests/03_dz_kuber_1.4$ kubectl exec -n dz4 test-multitoo
 2. Продемонстрировать доступ с помощью браузера или `curl` с локального компьютера.
 3. Предоставить манифест и Service в решении, а также скриншоты или вывод команды п.2.
 
+Создаю манифест и применяю его:
+```
+usrcon@cli-k8s-01:~/manifests/03_dz_kuber_1.4$ kubectl apply -f ~/manifests/03_dz_kuber_1.4/05_svc_nginx_multitool_nodeport.yml
+service/svc-nginx-multitool-dz4-node created
+usrcon@cli-k8s-01:~/manifests/03_dz_kuber_1.4$ kubectl get svc -n dz4 -o wide
+NAME                           TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                       AGE   SELECTOR
+svc-nginx-multitool-dz4        ClusterIP   10.152.183.36    <none>        9001/TCP,9002/TCP             58m   app=web
+svc-nginx-multitool-dz4-node   NodePort    10.152.183.185   <none>        80:30000/TCP,8080:30001/TCP   6s    app=web
+usrcon@cli-k8s-01:~/manifests/03_dz_kuber_1.4$ kubectl get ep -n dz4 -o wide
+NAME                           ENDPOINTS                                                        AGE
+svc-nginx-multitool-dz4        10.1.198.96:8080,10.1.63.170:8080,10.1.63.171:8080 + 3 more...   58m
+svc-nginx-multitool-dz4-node   10.1.198.96:8080,10.1.63.170:8080,10.1.63.171:8080 + 3 more...   44s
+usrcon@cli-k8s-01:~/manifests/03_dz_kuber_1.4$ kubectl get nodes -o wide
+NAME          STATUS   ROLES    AGE     VERSION   INTERNAL-IP    EXTERNAL-IP   OS-IMAGE             KERNEL-VERSION      CONTAINER-RUNTIME
+microk8s-01   Ready    <none>   6d17h   v1.28.3   10.50.41.124   <none>        Ubuntu 22.04.3 LTS   5.15.0-88-generic   containerd://1.6.15
+microk8s-02   Ready    <none>   13d     v1.28.3   10.50.41.125   <none>        Ubuntu 22.04.3 LTS   5.15.0-88-generic   containerd://1.6.15
+```
+
+Проверяю в браузере доступность приложений из обоих кластеров:
+
 ------
